@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const should = chai.should();
 const {
     BlogPost
-} = require('../models'); //ask marius what is ../
+} = require('../models');
 const {
     app, runServer, closeServer
 } = require('../server');
@@ -17,7 +17,7 @@ chai.use(chaiHTTP);
 
 //start with faker to create a random data that we can use to test
 function seedBlogPostData() {
-    console.info('seeding the database') //what is .info?
+    console.info('seeding the database')
     const seedData = [];
     for (let i = 1; i <= 10; i++) {
         seedData.push(generateData())
@@ -28,7 +28,7 @@ function seedBlogPostData() {
 function generateData() {
     data = {
         author: {
-            firstName: faker.name.firstName(), //how does faker works?
+            firstName: faker.name.firstName(),
             lastName: faker.name.lastName()
         },
         title: faker.lorem.sentence(),
@@ -40,13 +40,13 @@ function generateData() {
 //reset function
 function tearDownDb() {
     console.warn('Deleting Database');
-    return mongoose.connection.dropDatabase();
-    /*
-    return new Promise((resolve, reject) => {
-    console.warn('Deleting database');
-    mongoose.connection.dropDatabase()
-      .then(result => resolve(result))
-      .catch(err => reject(err))
+  return mongoose.connection.dropDatabase();
+  /*
+  return new Promise((resolve, reject) => {
+  console.warn('Deleting database');
+  mongoose.connection.dropDatabase()
+    .then(result => resolve(result))
+    .catch(err => reject(err))
   });
     */
 }
